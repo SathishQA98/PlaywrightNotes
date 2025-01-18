@@ -1,0 +1,75 @@
+1. Locate Element using Xpath with known Attribute and Unknown Tag
+
+    When you dnt know the element but known attribute:
+	This Xpath will find the matching element using known attribute for unknown tag. 
+	* is a wild operator used to find the matching value, here * will replace the html tag. 
+
+	//*[@Attribute = 'value']
+
+2. Locate Element using Xpath when any part of the  text or Attribute value is known 
+
+	When you have the partial text and partial class value, still you can find Xpath
+	Scanario: Yesterday the class name was just 'frstName' but today dev added some classes like: 'frstName bt-67 kdd' now our xpath will get fail 
+	1. class = 'frstName bt-67 kdd' data-test='login_credentials_wrap'
+	2. <h1>Locate Element using Xpath when part of the visible text or Attribute value is known</h1>
+	If You dnt remember the partial value of Attribute or Text use contains Method
+
+	//Tag[contains(@Attribute, 'attributeValue')]
+	//Tag[contains(text(), 'partial Text')]
+
+3. Locate Element using Xpath When beginning value of text or attribute value is known
+
+	Sometime we will not remember the entire attribute value but remember the starting value 
+	//1. class = 'frstName bt-67 kdd' data-test='login_credentials_wrap'
+
+	//Tag[starts-with(@Attribute, 'attributeValue')]
+	//Tag[starts-with(text(), 'beginingText')]
+
+4. Locate Element using Xpath along with multiple Attributes
+
+	One can use multiple attribute to find Xpath which gives more uniqueness to the element:
+
+	//input[@id='user-name'][@data-test='username'][@name='user-name']
+
+5. Locate Element using Xpath using conditions
+
+	Sometimes you wanted to make sure that element should contain the expected Attribute value
+	use conditional operator to put some condition on Xpath 
+	One can use like AND, OR operators to make conditions
+	//input[@id='user-name' and @data-test='username' and @name='user-name']
+	// and both should be true, or any one of condition should be true
+
+
+6. Xpath can be bidirectional [Forward and Backward]
+
+Locate Parent element 
+It will return the immediate parent of current element. 
+
+	1. Locate the parent element from the current Element 
+	2. Go to the element that you wanted to find parent
+	3. Locate the current element then => / => then type parent => then :: => then *. 
+	4. Either you can use * or the known parent html tag
+
+	//input[@id='user-name']/parent::*
+	//input[@id='user-name']/parent::form
+
+Locate Child Element
+It will return the immediate child of current element
+
+	1. Same as parent method just replace parent => child
+	
+	//div[contains(@class, 'login_credentials_wrap-inner')]/child::*
+
+Locate ancestor
+It will return all the previous element from the current element coz all them are ancestor including parent
+
+	//input[@id='user-name']/ancestor::div 
+
+Locate Following  element
+It will return very all the mentioned element from the current element
+
+	//input[@id='user-name']/following::div
+	1. It will retrun all the only div element from the current element
+	2. You can mention any tag that you wanted to get
+
+Locate Descendant element

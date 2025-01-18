@@ -10,7 +10,13 @@ test('Wait concepts', async()=>{
 
     //Playwright Resolves Element state which is TobeVisible, TobeAttached, Or Network and Dom Related lags, And resolve flaky testing
 
-    // Browser Related Waits
+    //Implicity - Automatic Wait - Ex: await => It ensure the action to be completed, until it freeze the execution for 30s by default
+    //Explicit - Manual Wait - Ex: waitForSelector() wrt to element visible and attached to DOM
+    
+    //Wait for URL to match the parameter
+    await _page.waitForURL('**\/target.html');
+
+    //Browser Related Waits
     await _page.waitForLoadState('load', {timeout: 40000}); //30 sec default, timeout is optional, but ideal to wait 30 sec and not more
     await _page.waitForLoadState('domcontentloaded');
     await _page.waitForLoadState('networkidle');
