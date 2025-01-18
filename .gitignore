@@ -1,4 +1,4 @@
 node_modules/
 /package.json/
-/package0lock.json/
+/package-lock.json/
 /playwright/.cache
