@@ -4,14 +4,12 @@ import test from "playwright/test";
 
 test('Interact with Links', async()=>{
 
+    //Condition: 1. specified using <a>, <a> should nave name and include href, href attributute should have some value 
+    
     const _browser = await chromium.launch({slowMo: 3000});
     const _page = await _browser.newPage();
     await _page.goto('https://www.leafground.com/link.xhtml');//implict
 
-    //What is Link
-    // should be in <a> tag
-    // link should be given in the href attribute with in <a> href = 'navigation.html' href => hyperlink reference => reference to navigate on trigger
-    // link should have name 
 
     //Actions
     // 1. click [Right, Left, Middle]
