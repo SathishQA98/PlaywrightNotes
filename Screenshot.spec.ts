@@ -30,6 +30,12 @@ test('Screen shot', async()=>{
     
     //4. Save single screenshot to spec folder
 
+    //To store under spec folder
+    //Step - 1 : Locate the folder path using path.join(2 parameters => path, screenshot name);
+    //path is used to specify the local path
+    //path.join() is belongs to Typescript is used to store image to the specified location
+
+
     const sourcePath = path.join('/Users/sathishgeetha/Documents/Playwright Workshop/Screenshots', 'OnloadPage.png') // 2 param 
     await _page.screenshot({path: sourcePath, fullPage: true});
 
