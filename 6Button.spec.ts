@@ -9,21 +9,43 @@ test('Locate the Button', async()=>{
     var page = await browser.newPage();
     await page.goto('https://www.leafground.com/button.xhtml');
 
+    // Types of HTML buttons
+    // 1. <button>, 2. <Input type=submit>
+
+
     // When it a button one will do click or dbl click action
     // Bounding box
     // Count
 
-    //Find Button using
-    //1. getByRole
+    //Button Handling
+    //1. getByRole [Aria-label, Aria-labelledby or associated tag <button> <span> click </span> </button>, <button><strong>Start</strong> Now</button> => await page.getByRole('button', { name: 'Start Now' }) or any attribute value with in button tag]
     //2. locator
+    //3. getByTestId
+    //4. getByTitle
+    //5. getByAltText
+    //6. getByText
 
     //Best practice => getByRole
 
     //1. Click action
     //single click
     await page.getByRole('button', {name: 'buttonName'}).click();
+
+    var buttonName =  page.getByRole('button', {name: 'buttonName'});
+    await buttonName.click();
+
     //double click
     await page.getByRole('button', {name: 'buttonName'}).dblclick();
+
+    //Other Apis to locate button
+    var buttonName = page.getByTestId('TestIdValue');
+    await buttonName.click();
+
+    var buttonName =  page.getByTitle('TitleValue');
+    await buttonName.click();
+
+    var buttonName =  page.getByAltText('AltValue');
+    await buttonName.click();
 
     //2. Bounding box event
     //Button Height, Width, Positions [X and y Axis]
@@ -66,4 +88,6 @@ test('Locate the Button', async()=>{
         assert.fail();
     }
 
-})
+    await page.close();
+
+});
