@@ -44,7 +44,8 @@ test('Browser Invocation', async()=>{
     await _page.getByAltText('Playwright logo').click();
 
     //7. getAttribute
-    await _page.getAttribute('button', 'class'); //2 para 1. tag, 2. attributeName
+    await _page.getAttribute('locator', 'class'); //2 para 1. tag, 2. attributeName
+    await _page.locator("locator").getAttribute('AttributeName');
 
     //8. Locate element by locator
     await _page.locator('#home'); //id, class, css-selector, Xpath 
@@ -52,6 +53,7 @@ test('Browser Invocation', async()=>{
     await _page.locator('button#home');
     await _page.locator("//tag[@attribute='value']");
 
+    await _page.locator("#commonLocator").nth(1).click() // nth starts from 0
 
     //Post conidition
     await _page.close();
