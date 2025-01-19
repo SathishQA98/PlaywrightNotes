@@ -1,5 +1,5 @@
 import {chromium} from 'playwright'; //Import test and chromium modules from pw library
-import test from  'playwright/test';
+import test, { expect } from  'playwright/test';
 
 test('interaction with mouse', async()=>{
 
@@ -24,5 +24,11 @@ test('interaction with mouse', async()=>{
    await _gotoHomeButton.hover({force: true}); //hovering on any element 
    await _gotoHomeButton.focus(); // provide focus to the element if no focus into the element
    await _gotoHomeButton.blur(); //  remove focus to the element if focus provided into the element
+
+   //Tooltip verification
+   var buttonToolTipText = await _gotoHomeButton.getAttribute('tooltip or data-tooltip');
+   expect(buttonToolTipText).toContain('Expected tooltip text');
+
+
 
 })
